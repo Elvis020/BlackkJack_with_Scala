@@ -2,6 +2,7 @@ package GamePlay
 
 import Actions.Actions.{dealCards, dealWithPlayers, dealer, shuffleCards}
 import CardDeck.numberOfPlayers
+import Messages.Messages.{availablePlayers, shuffleCardsMessage, welcome}
 import Utils.Player
 import Utils.TypeAlias.Deck
 
@@ -9,6 +10,8 @@ import scala.collection.mutable.ListBuffer
 
 object Main {
   def main(args: Array[String]): Unit = {
+    println(welcome)
+    println("-"*welcome.length)
 
     // Assuming there are 3 players
     val player_1 = Player("Player1")
@@ -17,9 +20,14 @@ object Main {
 
     // Adding players to the list
     numberOfPlayers.addAll(ListBuffer(player_1, player_2, player_3))
+    println("\n"+availablePlayers)
+    println("-"*availablePlayers.length)
+    numberOfPlayers.foreach(println)
 
     // Each player is dealt a hand from the top of the deck
     // TODO: Write test to check the number of cards generated
+    println("\n" + shuffleCardsMessage)
+//    println("-" * shuffleCardsMessage.length)
     val cachedShuffledCards = shuffleCards()
 
     // Dealer shuffles the cards
@@ -27,6 +35,9 @@ object Main {
 
     // First hand dealt to players
     for (player <- numberOfPlayers) dealCards(2, player)
+
+    println("Dealing the first 2 cards to the players")
+    numberOfPlayers.map(player => (player.name,player.totalCardsOfPlayer)).foreach(println)
 
     // Players are dealt with based on the outcome of their cards
     dealWithPlayers()
