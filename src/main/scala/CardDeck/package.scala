@@ -16,7 +16,8 @@ package object CardDeck {
     Clubs(CardNumber.Ten),
     Clubs(CardNumber.Jack),
     Clubs(CardNumber.Queen),
-    Clubs(CardNumber.King)
+    Clubs(CardNumber.King),
+    Clubs(CardNumber.Ace)
   )
 
 
@@ -32,7 +33,8 @@ package object CardDeck {
     Hearts(CardNumber.Ten),
     Hearts(CardNumber.Jack),
     Hearts(CardNumber.Queen),
-    Hearts(CardNumber.King))
+    Hearts(CardNumber.King),
+    Hearts(CardNumber.Ace))
 
 
   val all_spades = ListBuffer(
@@ -47,7 +49,8 @@ package object CardDeck {
     Spades(CardNumber.Ten),
     Spades(CardNumber.Jack),
     Spades(CardNumber.Queen),
-    Spades(CardNumber.King)
+    Spades(CardNumber.King),
+    Spades(CardNumber.Ace)
   )
 
 
@@ -63,7 +66,8 @@ package object CardDeck {
     Diamond(CardNumber.Ten),
     Diamond(CardNumber.Jack),
     Diamond(CardNumber.Queen),
-    Diamond(CardNumber.King)
+    Diamond(CardNumber.King),
+    Diamond(CardNumber.Ace)
   )
 
   val numberOfPlayers:ListOfPlayers = ListBuffer.empty[Player]

@@ -18,9 +18,3 @@ object CardNumber{
   case object Ace extends CardNumber(11)
 }
 
-object t {
-  def main(args: Array[String]): Unit = {
-    val cNum = CardNumber
-    println(cNum.Ten.value)
-  }
-}
