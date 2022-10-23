@@ -1,0 +1,18 @@
+package Messages
+
+object Messages {
+  val welcome = "Welcome to the Black Jack Game Project"
+  val availablePlayers = "Available players"
+  val results = "Winner(s)"
+  val playersWhoPassedCriteria = "Players who passed the criteria"
+  val inPlay = "In-Play -> Players go in turn"
+  val shuffleCardsMessage = "Cards have been shuffled"
+  val dealingToPlayers = "Dealing to players"
+
+
+  def displayMessage(message:String): Unit = {
+    println("\n" + message)
+    println("-" * message.length)
+  }
+
+}
