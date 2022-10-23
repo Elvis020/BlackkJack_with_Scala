@@ -1,24 +1,15 @@
 package GamePlay
 
-import Actions.Actions.{dealCards, dealWithPlayers, dealer, shuffleCards}
+import Actions.Actions._
 import CardDeck.numberOfPlayers
-import Messages.Messages.{availablePlayers, displayMessage, shuffleCardsMessage, welcome}
-import Utils.Player
+import Messages.Messages._
 import Utils.TypeAlias.Deck
-
-import scala.collection.mutable.ListBuffer
 
 object Main {
   def main(args: Array[String]): Unit = {
-    displayMessage(welcome)
+    displayWelcomeMessage(welcome)
+    requestAndCreatePlayers()
 
-    // Assuming there are 3 players
-    val player_1 = Player("Player1")
-    val player_2 = Player("Player2")
-    val player_3 = Player("Player3")
-
-    // Adding players to the list
-    numberOfPlayers.addAll(ListBuffer(player_1, player_2, player_3))
     displayMessage(availablePlayers)
     numberOfPlayers.foreach(println)
 

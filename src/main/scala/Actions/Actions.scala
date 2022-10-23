@@ -1,22 +1,55 @@
 package Actions
 
 import CardDeck._
-import Messages.Messages.{dealingToPlayers, displayMessage, inPlay, playersWhoPassedCriteria, results}
+import Messages.Messages.{dealingToPlayers, displayMessage, inPlay, playersWhoPassedCriteria, requestNumberOfPlayers, results}
 import Utils.CardRules._
 import Utils.Player
 import Utils.TypeAlias.{CardInDeck, Deck}
 
 import java.util.Collections
 import scala.collection.mutable.ListBuffer
-import scala.util.Random
+import scala.io.StdIn
+import scala.util.{Failure, Random, Success, Try}
 
 object Actions {
+
+  // Request the number of players and create them
+  def requestAndCreatePlayers():Unit = {
+    displayMessage("\n"+requestNumberOfPlayers)
+    println("Enter 0 for the default value which is 3.😊")
+    val readUserInput = Try(StdIn.readInt())
+    readUserInput match {
+      case Failure(exception) => {
+        println("Kindly check your input and enter a valid number, between 1 and 6")
+        requestAndCreatePlayers()
+      }
+      case Success(value) => value match {
+        case number if number>6 || number<1 => {
+          println("Value is either greater than 6 or less than 1, using default value of 3.")
+          createPlayer(3)
+        }
+        case number => createPlayer(number)
+      }
+    }
+
+
+  }
+
+
+  def createPlayer(value:Int) = {
+    for (i <- Range.inclusive(1, value)) {
+      val nameOfPlayer = s"Player${i}"
+      numberOfPlayers.addOne(Player(nameOfPlayer))
+    }
+  }
+
+
+
   // At the start of the game, the deck is shuffled
   def shuffleCards(): Deck = {
     val allCards: Deck = ListBuffer(all_hearts, all_diamonds, all_clubs, all_spades).flatten
     Random.shuffle(allCards)
   }
-
 
   // take the head of the shuffled deck and start giving it to the players(Current work-around)
   def dealer(cachedShuffledCards: Deck): CardInDeck = {
@@ -25,14 +58,12 @@ object Actions {
     selected
   }
 
-  // TODO: Write test to check the number of cards remaining after dealing the initial ones
   def dealCards(numberOfTimes: Int = 1, player: Player): Unit = {
     for (_ <- Range(0, numberOfTimes)) player.totalCardsOfPlayer += dealer(shuffleCards())
   }
 
-  displayMessage(inPlay)
-  def dealWithPlayers(): Unit = {
 
+  def dealWithPlayers(): Unit = {
 
     val playersToRemove = ListBuffer[Player]()
 
@@ -68,7 +99,7 @@ object Actions {
   }
 
   // Get winner
-  def getWinner = {
+  def getWinner:Unit = {
     // Filtering the winners
     val filterWinners = numberOfPlayers
       .filter(player =>
@@ -93,7 +124,7 @@ object Actions {
 
 
     displayMessage(results)
-    if(get_final_winner.nonEmpty) get_final_winner.foreach(println) else "No winners"
+    if(get_final_winner.nonEmpty) get_final_winner.map(_._1).foreach(println) else println("No winners")
   }
 
 
