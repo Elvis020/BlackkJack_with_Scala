@@ -1,12 +1,11 @@
 package Actions
 
 import CardDeck._
-import Messages.Messages.{dealingToPlayers, displayMessage, inPlay, playersWhoPassedCriteria, requestNumberOfPlayers, results}
+import Messages.Messages._
 import Utils.CardRules._
 import Utils.Player
 import Utils.TypeAlias.{CardInDeck, Deck}
 
-import java.util.Collections
 import scala.collection.mutable.ListBuffer
 import scala.io.StdIn
 import scala.util.{Failure, Random, Success, Try}
@@ -32,10 +31,14 @@ object Actions {
       }
     }
 
+//    (Player1, Cards: Hearts (Four), Diamond(King)) 14
+//    (Player2, Cards: Spades (Ace), Diamond(Jack)) 21
+//    (Player3, Cards: Diamond (Two), Clubs(King)) 12
 
   }
 
 
+  // Creates players based on input/default value
   def createPlayer(value:Int) = {
     for (i <- Range.inclusive(1, value)) {
       val nameOfPlayer = s"Player${i}"
@@ -44,34 +47,33 @@ object Actions {
   }
 
 
-
   // At the start of the game, the deck is shuffled
   def shuffleCards(): Deck = {
     val allCards: Deck = ListBuffer(all_hearts, all_diamonds, all_clubs, all_spades).flatten
     Random.shuffle(allCards)
   }
 
-  // take the head of the shuffled deck and start giving it to the players(Current work-around)
+  // Take the head of the shuffled deck and start giving it to the players(Current work-around)
   def dealer(cachedShuffledCards: Deck): CardInDeck = {
     val selected = cachedShuffledCards.head
     cachedShuffledCards.remove(0)
     selected
   }
 
+  // Deal cards to player one-at-a-time
   def dealCards(numberOfTimes: Int = 1, player: Player): Unit = {
     for (_ <- Range(0, numberOfTimes)) player.totalCardsOfPlayer += dealer(shuffleCards())
   }
 
-
+  // Deal cards to players and check the criteria each time a hand is dealt
   def dealWithPlayers(): Unit = {
 
     val playersToRemove = ListBuffer[Player]()
-
     numberOfPlayers match {
       case numberOfPlayers if (numberOfPlayers.isEmpty) => throw new IllegalArgumentException("There are no players available.")
       case _ =>
         displayMessage(dealingToPlayers)
-        numberOfPlayers.map(player => (player.name, player.totalCardsOfPlayer.map(_.cardNumber.value))).foreach(println)
+        numberOfPlayers.map(player => (player.name,player.toString())).foreach(nc => println(nc._1+" with "+nc._2))
         for (player <- numberOfPlayers) {
           if (hit(player)) dealCards(1, player)
           else if (go_bust(player)) playersToRemove += player
@@ -83,11 +85,12 @@ object Actions {
     if(playersToRemove.nonEmpty){
       numberOfPlayers -= playersToRemove.head
     }
-    if (crossCheckWithRules()) getWinner
+    if (rules()) getWinner
     else dealWithPlayers()
   }
 
-  def crossCheckWithRules(): Boolean = {
+  // Set of rules, on which the game is based on
+  def rules(): Boolean = {
     val condition_1 = numberOfPlayers.count(stick) == numberOfPlayers.size
     val condition_2 = numberOfPlayers
       .map(player => (player.name, player.totalCardsOfPlayer)
@@ -108,14 +111,15 @@ object Actions {
           .map(_.cardNumber.value)
           .sum < 21)
 
-    val winners_version_1 = filterWinners.map(player => (player.name,player.totalCardsOfPlayer.map(_.cardNumber.value).sum))
+
+    val finalWinners = filterWinners.map(player => (player.name,player.totalCardsOfPlayer.map(_.cardNumber.value).sum))
 
 
     displayMessage(playersWhoPassedCriteria)
-    winners_version_1.foreach(println)
+    finalWinners.foreach(nc => println(nc._1+", Total: "+nc._2))
 
 
-    val finalWinners = filterWinners.map(player => (player.name,player.totalCardsOfPlayer.map(_.cardNumber.value).sum))
+    // In cases where there is more than one winner, display all of them
     val get_final_winner = {
       val max_number = if (finalWinners.nonEmpty) {finalWinners.maxBy {_._2}._2} else 0
       filterWinners.map(player => (player.name,player.totalCardsOfPlayer.map(_.cardNumber.value).sum)).filter(_._2 == max_number)
@@ -124,7 +128,11 @@ object Actions {
 
 
     displayMessage(results)
-    if(get_final_winner.nonEmpty) get_final_winner.map(_._1).foreach(println) else println("No winners")
+
+    // In cases where everyone does not meet criteria, no one wins
+    if(get_final_winner.nonEmpty) {
+      get_final_winner.map(_._1).foreach(println)
+    } else println("No winners")
   }
 
 

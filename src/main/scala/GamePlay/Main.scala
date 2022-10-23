@@ -5,28 +5,29 @@ import CardDeck.numberOfPlayers
 import Messages.Messages._
 import Utils.TypeAlias.Deck
 
-object Main {
-  def main(args: Array[String]): Unit = {
+object Main extends App{
+    // Step 1
     displayWelcomeMessage(welcome)
     requestAndCreatePlayers()
 
+    // Step 2
     displayMessage(availablePlayers)
-    numberOfPlayers.foreach(println)
+    numberOfPlayers.foreach(player => println(player.name))
 
-    // Each player is dealt a hand from the top of the deck
+    // Step 3: Each player is dealt a hand from the top of the deck
     println("\n" + shuffleCardsMessage)
     val cachedShuffledCards = shuffleCards()
 
-    // Dealer shuffles the cards
+    // Step 4: Dealer shuffles the cards
     dealer(cachedShuffledCards: Deck)
 
-    // First hand dealt to players
+    // Step 5: First hand dealt to players
     for (player <- numberOfPlayers) dealCards(2, player)
 
-    println("Dealing the first 2 cards to the players")
-    numberOfPlayers.map(player => (player.name,player.totalCardsOfPlayer)).foreach(println)
+    // Step 6
+    displayMessage(dealingFirst2)
+    numberOfPlayers.map(player => (player.name,player.toString())).foreach(nc => println(nc._1+" with "+nc._2))
 
-    // Players are dealt with based on the outcome of their cards
+    // Step 7: Players are dealt with based on the outcome of their cards
     dealWithPlayers()
-  }
 }

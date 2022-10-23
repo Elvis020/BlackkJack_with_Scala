@@ -11,6 +11,7 @@ case class Diamond(number:CardNumber) extends Suit {
 }
 case class Clubs(number:CardNumber) extends Suit {
   override def cardNumber: CardNumber = number
+
 }
 
 
