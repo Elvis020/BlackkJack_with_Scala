@@ -6,6 +6,7 @@ import munit.FunSuite
 import scala.collection.mutable.ListBuffer
 
 class GamePlayTest extends FunSuite{
+  override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
 
   // Mocking the players
   val player_1 = Player("player_1")
@@ -29,4 +30,5 @@ class GamePlayTest extends FunSuite{
     numberOfPlayers.addAll(ListBuffer(player_1,player_2,player_3))
     assertEquals(numberOfPlayers.size, 3)
   }
+
 }
