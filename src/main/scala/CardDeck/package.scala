@@ -4,7 +4,7 @@ import Utils.TypeAlias.ListOfPlayers
 import scala.collection.mutable.ListBuffer
 
 package object CardDeck {
-  val all_clubs = ListBuffer(
+  val all_clubs: ListBuffer[Clubs] = ListBuffer(
     Clubs(CardNumber.Two),
     Clubs(CardNumber.Three),
     Clubs(CardNumber.Four),
@@ -20,8 +20,7 @@ package object CardDeck {
     Clubs(CardNumber.Ace)
   )
 
-
-  val all_hearts = ListBuffer(
+  val all_hearts: ListBuffer[Hearts] = ListBuffer(
     Hearts(CardNumber.Two),
     Hearts(CardNumber.Three),
     Hearts(CardNumber.Four),
@@ -36,8 +35,7 @@ package object CardDeck {
     Hearts(CardNumber.King),
     Hearts(CardNumber.Ace))
 
-
-  val all_spades = ListBuffer(
+  val all_spades: ListBuffer[Spades] = ListBuffer(
     Spades(CardNumber.Two),
     Spades(CardNumber.Three),
     Spades(CardNumber.Four),
@@ -53,8 +51,7 @@ package object CardDeck {
     Spades(CardNumber.Ace)
   )
 
-
-  val all_diamonds = ListBuffer(
+  val all_diamonds: ListBuffer[Diamond] = ListBuffer(
     Diamond(CardNumber.Two),
     Diamond(CardNumber.Three),
     Diamond(CardNumber.Four),

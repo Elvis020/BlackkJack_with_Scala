@@ -23,7 +23,6 @@ object Main {
     numberOfPlayers.foreach(println)
 
     // Each player is dealt a hand from the top of the deck
-    // TODO: Write test to check the number of cards generated
     println("\n" + shuffleCardsMessage)
     val cachedShuffledCards = shuffleCards()
 

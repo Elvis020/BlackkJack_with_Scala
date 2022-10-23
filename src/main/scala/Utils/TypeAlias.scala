@@ -1,6 +1,6 @@
 package Utils
 
-import CardDeck.Suit
+import CardDeck.{Clubs, Suit}
 
 import scala.collection.mutable.ListBuffer
 

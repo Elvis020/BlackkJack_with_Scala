@@ -6,3 +6,5 @@ lazy val root = (project in file("."))
   .settings(
     name := "BlackJack_Project"
   )
+libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
+libraryDependencies += "org.scalameta" %% "munit-scalacheck" % "0.7.29" % Test
