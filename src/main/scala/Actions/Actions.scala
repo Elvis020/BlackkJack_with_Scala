@@ -12,6 +12,32 @@ import scala.util.{Failure, Random, Success, Try}
 
 object Actions {
 
+  // Asks the user's preference of shuffling technique
+  def askUserTheShufflingTechnique():Unit = {
+    displayMessage(listShufflingTechniques)
+    displayShufflingTechniques()
+    val readTechniqueInput = Try(StdIn.readInt())
+    readTechniqueInput match {
+      case Failure(exception) => {
+        println("Kindly check your input and select a valid technique")
+        askUserTheShufflingTechnique()
+      }
+      case Success(value) => value match {
+        case n if n >= 0 & n < 4  => println("\n" + shuffleCardsMessage + s" using the ${shufflingTechnique(value-1)} technique")
+        case _ => {
+          askUserTheShufflingTechnique()
+        }
+      }
+    }
+  }
+
+  // Function to display the shuffling techniques available
+  def displayShufflingTechniques():Unit = {
+    for (i <- Range(0, shufflingTechnique.length)) {
+      println(s"${i + 1}.${shufflingTechnique(i)}")
+    }
+  }
+
   // Request the number of players and create them
   def requestAndCreatePlayers():Unit = {
     displayMessage("\n"+requestNumberOfPlayers)
@@ -30,10 +56,6 @@ object Actions {
         case number => createPlayer(number)
       }
     }
-
-//    (Player1, Cards: Hearts (Four), Diamond(King)) 14
-//    (Player2, Cards: Spades (Ace), Diamond(Jack)) 21
-//    (Player3, Cards: Diamond (Two), Clubs(King)) 12
 
   }
 

@@ -1,7 +1,7 @@
 package GamePlay
 
 import Actions.Actions._
-import CardDeck.numberOfPlayers
+import CardDeck.{numberOfPlayers, shufflingTechnique}
 import Messages.Messages._
 import Utils.TypeAlias.Deck
 
@@ -14,8 +14,11 @@ object Main extends App{
     displayMessage(availablePlayers)
     numberOfPlayers.foreach(player => println(player.name))
 
+    // TODO: Add shuffling technique
+    askUserTheShufflingTechnique()
+
     // Step 3: Each player is dealt a hand from the top of the deck
-    println("\n" + shuffleCardsMessage)
+
     val cachedShuffledCards = shuffleCards()
 
     // Step 4: Dealer shuffles the cards

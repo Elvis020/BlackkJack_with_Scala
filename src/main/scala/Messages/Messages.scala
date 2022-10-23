@@ -9,6 +9,7 @@ object Messages {
   val dealingToPlayers = "Dealing to players"
   val requestNumberOfPlayers = "Please enter the number of players for this game."
   val dealingFirst2 = "🃏Dealing the first 2 cards to the players🃏"
+  val listShufflingTechniques = "Which shuffling🔀 technique would you like to be used?"
 
 
 

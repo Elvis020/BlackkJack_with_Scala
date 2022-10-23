@@ -68,4 +68,10 @@ package object CardDeck {
   )
 
   val numberOfPlayers:ListOfPlayers = ListBuffer.empty[Player]
+
+  val shufflingTechnique:List[String] = List(
+    "Riffle shuffle",
+    "Overhand Shuffle",
+    "Hindu Shuffle",
+    "Pharoah/Faro Shuffle")
 }
