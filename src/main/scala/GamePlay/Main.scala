@@ -36,9 +36,7 @@ object Main {
     }
       // TODO: Write test to check the number of cards remaining after dealing the initial ones
     def dealCards(numberOfTimes:Int = 1,player: Player): Unit ={
-      for {
-        _ <- Range(0,numberOfTimes)
-      } player.totalCardsOfPlayer += dealer()
+      for(_ <- Range(0,numberOfTimes)) player.totalCardsOfPlayer += dealer()
     }
 
 
@@ -50,37 +48,45 @@ object Main {
 
 
     // Stage 3(Actions) - Players go in turn
-    // TODO: Have a checker, check if the current player uses the strategy available
     def dealWithPlayers():Unit = numberOfPlayers match{
       case numberOfPlayers if (numberOfPlayers.isEmpty) => throw new IllegalArgumentException("There are no players available.")
       case _ =>
-        for (i <- numberOfPlayers.indices) {
-          val current_player = numberOfPlayers(i)
-          if (hit(current_player)) dealCards(1,current_player)
-          if (stick(current_player)) println("It's a stick, no card is dealt")
-          if(go_bust(current_player)) removePlayer(current_player)
+        for (player <- numberOfPlayers) {
+          if (hit(player)) dealCards(1,player)
+          else if (stick(player)) println("It's a stick, no card is dealt")
+          else if(go_bust(player)) removePlayer(player)
         }
-        if(!crossCheckWithRules()) dealWithPlayers()
-        else getWinner()
-
-
+        println("---------OK---------")
+        if(crossCheckWithRules()) getWinner
+        else dealWithPlayers()
     }
     def crossCheckWithRules(): Boolean = {
       val condition_1 = numberOfPlayers.count(stick) == numberOfPlayers.size
-      val condition_2 = numberOfPlayers.flatMap(_.totalCardsOfPlayer).map(_.cardNumber.value).contains(21)
+      val condition_2 = numberOfPlayers.map(player => (player.name,player.totalCardsOfPlayer)._2.map(_.cardNumber.value).sum).contains(21)
       val condition_3 = numberOfPlayers.size == 1
-      condition_1 & condition_2 & condition_3
+      condition_1 || condition_2 || condition_3
     }
+
+
     // Get winner displays the final result for now
 //    def getWinner(): ListBuffer[(Player, Int)] = for {
 //      player <- numberOfPlayers
 //      score <- numberOfPlayers.flatMap(_.totalCardsOfPlayer).map(_.cardNumber.value)
 //    } yield (player, score)
-    def getWinner()= {
-      numberOfPlayers.foreach(println)
-  }
+    def getWinner = {
+      val filterWinners = numberOfPlayers
+        .filter(player =>
+          (player.name,player.totalCardsOfPlayer)
+            ._2
+            .map(_.cardNumber.value)
+            .sum < 21)
 
-  // Fix recursion issue
-  dealWithPlayers()
+
+      // TODO: Resolve the solution so that it works for when the values are the same and also,select the maximum
+      filterWinners.map(player => (player.name, player.totalCardsOfPlayer)).sortBy(_._2.map(_.cardNumber.value).sum).foreach(println)
+    }
+
+    dealWithPlayers()
+
   }
 }
