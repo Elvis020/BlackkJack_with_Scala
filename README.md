@@ -61,13 +61,7 @@ hitting 21, the player with the total closest (but still under) 21 wins.
 ![img_4.png](img_4.png)
 <hr>
 
-![img_3.png](img_3.png)
-<hr>
-
 ![img_2.png](img_2.png)
-<hr>
 
-![img_1.png](img_1.png)
 <hr>
-
 ![img.png](img.png)
