@@ -32,7 +32,7 @@ object Main {
         // Step 6
         displayMessage(dealingFirst2)
         numberOfPlayers.map(player => (player.name, player.toString()))
-          .foreach(nc => println(nc._1 + " with " + nc._2))
+          .foreach(player => println(player._1 + " with" + player._2))
 
         // Step 7: Players are dealt with based on the outcome of their cards
         dealWithPlayers()
