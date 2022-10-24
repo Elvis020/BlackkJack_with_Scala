@@ -4,7 +4,8 @@ import CardDeck._
 import Messages.Messages._
 import Player.Player
 import Utils.CardRules._
-import Utils.TypeAlias.{CardInDeck, Deck}
+import Utils.TypeAlias.{CardInDeck, Deck, GameInPlay}
+import Utils.UtilsFns.{calculateValueOfCards, createPlayer, dealCards, displayShufflingTechniques, rules}
 
 import scala.collection.mutable.ListBuffer
 import scala.io.StdIn
@@ -13,38 +14,30 @@ import scala.util.{Failure, Random, Success, Try}
 object Actions {
 
   // Asks the user's preference of shuffling technique
-  def askUserTheShufflingTechnique():Unit = {
+  def askUserTheShufflingTechnique():GameInPlay = {
     displayMessage(listShufflingTechniques)
     displayShufflingTechniques()
     val readTechniqueInput = Try(StdIn.readInt()-1)
     readTechniqueInput match {
-      case Failure(exception) => {
+      case Failure(_) => {
         println("Kindly check your input and select a valid technique")
         askUserTheShufflingTechnique()
       }
       case Success(value) => value match {
         case n if n >= 0 & n < 4  => println("\n" + shuffleCardsMessage + s" using the ${shufflingTechnique(value)} technique")
-        case _ => {
-          askUserTheShufflingTechnique()
-        }
+        case _ => askUserTheShufflingTechnique()
       }
     }
   }
 
-  // Function to display the shuffling techniques available
-  def displayShufflingTechniques():Unit = {
-    for (i <- Range(0, shufflingTechnique.length)) {
-      println(s"${i+1}.${shufflingTechnique(i)}")
-    }
-  }
 
   // Request the number of players and create them
-  def requestAndCreatePlayers():Unit = {
+  def requestAndCreatePlayers():GameInPlay = {
     displayMessage("\n"+requestNumberOfPlayers)
     println("Enter 0 for the default value which is 3.😊")
     val readUserInput = Try(StdIn.readInt())
     readUserInput match {
-      case Failure(exception) => {
+      case Failure(_) => {
         println("Kindly check your input and enter a valid number, between 1 and 6")
         requestAndCreatePlayers()
       }
@@ -61,16 +54,6 @@ object Actions {
   }
 
 
-  // Creates players based on input/default value
-  def createPlayer(value:Int) = {
-    // TODO: reword the player names
-    for (i <- Range(0, value)) {
-      val nameOfPlayer = s"Player${i+1}"
-      numberOfPlayers.addOne(Player(nameOfPlayer))
-    }
-  }
-
-
   // At the start of the game, the deck is shuffled
   def shuffleCards(): Deck = {
     val allCards: Deck = ListBuffer(all_hearts, all_diamonds, all_clubs, all_spades).flatten
@@ -78,59 +61,52 @@ object Actions {
   }
 
   // Take the head of the shuffled deck and start giving it to the players(Current work-around)
-  def dealer(cachedShuffledCards: Deck): CardInDeck = {
+  def dealCardToPlayer(cachedShuffledCards: Deck): CardInDeck = {
     val selected = cachedShuffledCards.head
     cachedShuffledCards.remove(0)
     selected
   }
 
-  // Deal cards to player one-at-a-time
-  def dealCards(numberOfTimes: Int = 1, player: Player): Unit = {
-    for (_ <- Range(0, numberOfTimes)) player.totalCardsOfPlayer += dealer(shuffleCards())
-  }
 
   // Deal cards to players and check the criteria each time a hand is dealt
-  def dealWithPlayers(): Unit = {
+  def dealWithPlayers(): GameInPlay = {
 
     val playersToRemove = ListBuffer[Player]()
     numberOfPlayers match {
       case numberOfPlayers if (numberOfPlayers.isEmpty) => throw new IllegalArgumentException("There are no players available.")
       case _ =>
+        
+        // Display message indicating that you are dealing to players
         displayMessage(dealingToPlayers)
-        numberOfPlayers.map(player => (player.name,player.toString(),player)).foreach(x => println(x._1+" with "+x._2+" Total: "+x._3.totalCardsOfPlayer.map(_.cardNumber.value).sum))
+        numberOfPlayers.map(player => (player.name,player.toString(),player)).foreach(x => println("🫴 "+x._1+x._2+" with total: "+calculateValueOfCards(x._3)))
+        println("\n")
+        
+        // Deal to players available
         for (player <- numberOfPlayers) {
               if (hit(player)) {
                 dealCards(1, player)
-                // TODO: Write a function to do total calc
-                println(s"\n${player.name} has been dealt again.${player.toString()}, Total: ${player.totalCardsOfPlayer.map(_.cardNumber.value).sum}")
+                println(s"🫴 ${player.name} has been dealt again.${player.toString()}, with total: ${calculateValueOfCards(player)}")
           }
-          else if (go_bust(player)) {println(s"\n${player.name} has been removed.");playersToRemove += player}
-          else if (stick(player)) println(s"It's a stick, no card is dealt to ${player.name}")
+          else if (go_bust(player)) playersToRemove += player
+          else if (stick(player)) println(s"🩼 It's a stick, no card is dealt to ${player.name}")
         }
     }
 
     // Check if you need to remove player
     if(playersToRemove.nonEmpty){
+      println(s"🚮 ${playersToRemove.head.name} has been removed.");
       numberOfPlayers -= playersToRemove.head
     }
+    
+    // Check again with rules and deal again to players depending on outcome
     if (rules()) getWinner
     else dealWithPlayers()
   }
 
-  // Set of rules, on which the game is based on
-  def rules(): Boolean = {
-    val condition_1 = numberOfPlayers.count(stick) == numberOfPlayers.size
-    val condition_2 = numberOfPlayers
-      .map(player => (player.name, player.totalCardsOfPlayer)
-      ._2.map(_.cardNumber.value).sum)
-      .contains(21)
 
-    val condition_3 = numberOfPlayers.size == 1
-    condition_1 || condition_2 || condition_3
-  }
 
   // Get winner
-  def getWinner:Unit = {
+  def getWinner:GameInPlay = {
     // Filtering the winners
     val filterWinners = numberOfPlayers
       .filter(player =>
@@ -140,21 +116,21 @@ object Actions {
           .sum < 21)
 
 
-    val finalWinners = filterWinners.map(player => (player.name,player.totalCardsOfPlayer.map(_.cardNumber.value).sum))
+
+    val finalWinners = filterWinners.map(player => (player.name,calculateValueOfCards(player)))
 
 
     displayMessage(playersWhoPassedCriteria)
     def passedCriteria() = {
-      if(finalWinners.nonEmpty) finalWinners.foreach(nc => println(nc._1+", Total: "+nc._2))
+      if(finalWinners.nonEmpty) finalWinners.foreach(winner => println(winner._1+", Total: "+winner._2))
       else println("No player passed the criteria")
     }
     passedCriteria()
 
     // In cases where there is more than one winner, display all of them
     val get_final_winner = {
-      val max_number = if (finalWinners.nonEmpty) {finalWinners.maxBy {_._2}._2} else 0
+      val max_number = if (finalWinners.nonEmpty) {finalWinners.maxBy{_._2}._2} else 0
       filterWinners.map(player => (player.name,player.totalCardsOfPlayer.map(_.cardNumber.value).sum)).filter(_._2 == max_number)
-
     }
 
 

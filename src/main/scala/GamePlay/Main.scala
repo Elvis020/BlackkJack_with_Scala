@@ -4,6 +4,7 @@ import Actions.Actions._
 import CardDeck.numberOfPlayers
 import Messages.Messages._
 import Utils.TypeAlias.Deck
+import Utils.UtilsFns.dealCards
 
 object Main {
     def main(args: Array[String]): Unit = {
@@ -22,10 +23,11 @@ object Main {
         val cachedShuffledCards = shuffleCards()
 
         // Step 4: Dealer shuffles the cards
-        dealer(cachedShuffledCards: Deck)
+        dealCardToPlayer(cachedShuffledCards: Deck)
 
         // Step 5: First hand dealt to players
         for (player <- numberOfPlayers) dealCards(2, player)
+
 
         // Step 6
         displayMessage(dealingFirst2)

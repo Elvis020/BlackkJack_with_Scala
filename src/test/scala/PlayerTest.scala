@@ -1,6 +1,6 @@
-import Actions.Actions.dealCards
 import CardDeck.numberOfPlayers
 import Player.Player
+import Utils.UtilsFns.dealCards
 import munit.FunSuite
 
 import scala.collection.mutable.ListBuffer
