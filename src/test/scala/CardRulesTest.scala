@@ -1,6 +1,5 @@
-import Actions.Actions.{dealCards, dealWithPlayers}
 import CardDeck.CardNumber.{Ace, Jack, King}
-import CardDeck.{Clubs, Spades, numberOfPlayers}
+import CardDeck.{Clubs, Spades}
 import Player.Player
 import Utils.CardRules.{go_bust, hit, stick}
 import munit.FunSuite
