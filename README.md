@@ -13,7 +13,7 @@ sbt test
 ```
 
 # THE BLACK JACK GAME DOMAIN MODEL
---------------------------------
+<hr>
 Blackjack is a game of cards using a standard deck of cards of 4 suits 
 (Hearts, Diamonds, Clubs and Spades), each of which has the 
 following cards (2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace), and 
@@ -28,13 +28,14 @@ In the game Blackjack, the cards have the following values:
 
 
 ### GAME RULES
-----------
+<hr>
 Assume there are 3 players. The aim of the game is to collect cards so 
 that the total of an individual player’s cards does not exceed 21. At the 
 end of the game the player with the total closest to 21 wins.
 At the start of the game, the deck is shuffled (i.e. the order of the cards 
 is randomized) and each player is immediately dealt a “hand” of two 
 cards from the top of the deck.
+
 Each player then takes turns to play. In a turn, the player uses the 
 following strategy to play the game:
   * If the player's total is less than 17, they "hit" (i.e. get dealt 
@@ -53,3 +54,20 @@ have "gone bust".
 
 At the end of the game, if the game has not finished due to a player 
 hitting 21, the player with the total closest (but still under) 21 wins.
+
+### Screenshots
+<hr>
+
+![img_4.png](img_4.png)
+<hr>
+
+![img_3.png](img_3.png)
+<hr>
+
+![img_2.png](img_2.png)
+<hr>
+
+![img_1.png](img_1.png)
+<hr>
+
+![img.png](img.png)
