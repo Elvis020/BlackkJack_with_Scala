@@ -1,8 +1,8 @@
 import Actions.Actions.{dealCards, dealWithPlayers}
 import CardDeck.CardNumber.{Ace, Jack, King}
 import CardDeck.{Clubs, Spades, numberOfPlayers}
+import Player.Player
 import Utils.CardRules.{go_bust, hit, stick}
-import Utils.Player
 import munit.FunSuite
 
 import scala.collection.mutable.ListBuffer

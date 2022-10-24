@@ -1,8 +1,8 @@
-import Utils.Player
+import Player.Player
 import Utils.TypeAlias.ListOfPlayers
-
 import scala.collection.mutable.ListBuffer
 
+// TODO: Refactor the name of the package object
 package object CardDeck {
   val all_clubs: ListBuffer[Clubs] = ListBuffer(
     Clubs(CardNumber.Two),

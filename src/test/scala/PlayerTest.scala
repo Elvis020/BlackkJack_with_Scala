@@ -1,11 +1,11 @@
 import Actions.Actions.dealCards
 import CardDeck.numberOfPlayers
-import Utils.Player
+import Player.Player
 import munit.FunSuite
 
 import scala.collection.mutable.ListBuffer
 
-class GamePlayTest extends FunSuite{
+class PlayerTest extends FunSuite{
   override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
 
   // Mocking the players
@@ -30,5 +30,7 @@ class GamePlayTest extends FunSuite{
     numberOfPlayers.addAll(ListBuffer(player_1,player_2,player_3))
     assertEquals(numberOfPlayers.size, 3)
   }
+
+  // TODO: Mock the cards and see if logic of getting winner is correct
 
 }

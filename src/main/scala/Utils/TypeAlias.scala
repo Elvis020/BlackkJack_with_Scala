@@ -1,6 +1,7 @@
 package Utils
 
 import CardDeck.{Clubs, Suit}
+import Player.Player
 
 import scala.collection.mutable.ListBuffer
 

@@ -1,4 +1,4 @@
-package Utils
+package Player
 
 import CardDeck.Suit
 

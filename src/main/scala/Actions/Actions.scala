@@ -2,8 +2,8 @@ package Actions
 
 import CardDeck._
 import Messages.Messages._
+import Player.Player
 import Utils.CardRules._
-import Utils.Player
 import Utils.TypeAlias.{CardInDeck, Deck}
 
 import scala.collection.mutable.ListBuffer
@@ -33,8 +33,9 @@ object Actions {
 
   // Function to display the shuffling techniques available
   def displayShufflingTechniques():Unit = {
+    // TODO: Make sure you can select the last technique
     for (i <- Range(0, shufflingTechnique.length)) {
-      println(s"${i + 1}.${shufflingTechnique(i)}")
+      println(s"${i}.${shufflingTechnique(i)}")
     }
   }
 
@@ -49,8 +50,9 @@ object Actions {
         requestAndCreatePlayers()
       }
       case Success(value) => value match {
-        case number if number>6 || number<1 => {
-          println("Value is either greater than 6 or less than 1, using default value of 3.")
+        case 0 => createPlayer(3)
+        case number if number>6 || number<2 => {
+          println("Please enter a value less than 7 or greater than 1, using default value of 3.")
           createPlayer(3)
         }
         case number => createPlayer(number)
@@ -62,7 +64,8 @@ object Actions {
 
   // Creates players based on input/default value
   def createPlayer(value:Int) = {
-    for (i <- Range.inclusive(1, value)) {
+    // TODO: reword the player names
+    for (i <- Range.inclusive(2, value+1)) {
       val nameOfPlayer = s"Player${i}"
       numberOfPlayers.addOne(Player(nameOfPlayer))
     }
@@ -95,10 +98,14 @@ object Actions {
       case numberOfPlayers if (numberOfPlayers.isEmpty) => throw new IllegalArgumentException("There are no players available.")
       case _ =>
         displayMessage(dealingToPlayers)
-        numberOfPlayers.map(player => (player.name,player.toString())).foreach(nc => println(nc._1+" with "+nc._2))
+        numberOfPlayers.map(player => (player.name,player.toString(),player)).foreach(x => println(x._1+" with "+x._2+" Total: "+x._3.totalCardsOfPlayer.map(_.cardNumber.value).sum))
         for (player <- numberOfPlayers) {
-          if (hit(player)) dealCards(1, player)
-          else if (go_bust(player)) playersToRemove += player
+              if (hit(player)) {
+                dealCards(1, player)
+                // TODO: Write a function to do total calc
+                println(s"\n${player.name} has been dealt again.${player.toString()}, Total: ${player.totalCardsOfPlayer.map(_.cardNumber.value).sum}")
+          }
+          else if (go_bust(player)) {println(s"\n${player.name} has been removed.");playersToRemove += player}
           else if (stick(player)) println(s"It's a stick, no card is dealt to ${player.name}")
         }
     }
@@ -138,8 +145,11 @@ object Actions {
 
 
     displayMessage(playersWhoPassedCriteria)
-    finalWinners.foreach(nc => println(nc._1+", Total: "+nc._2))
-
+    def passedCriteria() = {
+      if(finalWinners.nonEmpty) finalWinners.foreach(nc => println(nc._1+", Total: "+nc._2))
+      else println("No player passed the criteria")
+    }
+    passedCriteria()
 
     // In cases where there is more than one winner, display all of them
     val get_final_winner = {
@@ -156,7 +166,5 @@ object Actions {
       get_final_winner.map(_._1).foreach(println)
     } else println("No winners")
   }
-
-
 
 }
