@@ -1,3 +1,17 @@
+[![Tag](https://img.shields.io/badge/⚡tag-v1.1.0-blue.svg)](https://shields.io/)
+[![CI](https://img.shields.io/badge/CI-passing-deepgreen.svg)](https://shields.io/)
+
+## Requirement
+```sh
+scala sbt
+```
+
+## Run test
+
+```sh
+sbt test
+```
+
 # THE BLACK JACK GAME DOMAIN MODEL
 --------------------------------
 Blackjack is a game of cards using a standard deck of cards of 4 suits 
