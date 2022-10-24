@@ -16,14 +16,14 @@ object Actions {
   def askUserTheShufflingTechnique():Unit = {
     displayMessage(listShufflingTechniques)
     displayShufflingTechniques()
-    val readTechniqueInput = Try(StdIn.readInt())
+    val readTechniqueInput = Try(StdIn.readInt()-1)
     readTechniqueInput match {
       case Failure(exception) => {
         println("Kindly check your input and select a valid technique")
         askUserTheShufflingTechnique()
       }
       case Success(value) => value match {
-        case n if n >= 0 & n < 4  => println("\n" + shuffleCardsMessage + s" using the ${shufflingTechnique(value-1)} technique")
+        case n if n >= 0 & n < 4  => println("\n" + shuffleCardsMessage + s" using the ${shufflingTechnique(value)} technique")
         case _ => {
           askUserTheShufflingTechnique()
         }
@@ -35,7 +35,7 @@ object Actions {
   def displayShufflingTechniques():Unit = {
     // TODO: Make sure you can select the last technique
     for (i <- Range(0, shufflingTechnique.length)) {
-      println(s"${i}.${shufflingTechnique(i)}")
+      println(s"${i+1}.${shufflingTechnique(i)}")
     }
   }
 

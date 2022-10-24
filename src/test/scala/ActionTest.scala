@@ -6,4 +6,6 @@ class ActionTest extends FunSuite {
     val numberOfCards = shuffleCards().size
     assertEquals(numberOfCards, 52)
   }
+
+  // TODO: Mock the cards and see if logic of getting winner is correct
 }

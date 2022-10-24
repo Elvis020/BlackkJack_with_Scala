@@ -9,7 +9,6 @@ object Main {
     def main(args: Array[String]): Unit = {
         // TODO: Step 0 - Add the ability to take from commandLine
 
-
         // Step 1
         displayWelcomeMessage(welcome)
         requestAndCreatePlayers()
@@ -18,9 +17,8 @@ object Main {
         displayMessage(availablePlayers)
         numberOfPlayers.foreach(player => println(player.name))
 
-        askUserTheShufflingTechnique()
-
         // Step 3: Each player is dealt a hand from the top of the deck
+        askUserTheShufflingTechnique()
         val cachedShuffledCards = shuffleCards()
 
         // Step 4: Dealer shuffles the cards

@@ -31,6 +31,6 @@ class PlayerTest extends FunSuite{
     assertEquals(numberOfPlayers.size, 3)
   }
 
-  // TODO: Mock the cards and see if logic of getting winner is correct
+
 
 }
