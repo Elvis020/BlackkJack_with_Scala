@@ -33,7 +33,6 @@ object Actions {
 
   // Function to display the shuffling techniques available
   def displayShufflingTechniques():Unit = {
-    // TODO: Make sure you can select the last technique
     for (i <- Range(0, shufflingTechnique.length)) {
       println(s"${i+1}.${shufflingTechnique(i)}")
     }
@@ -65,8 +64,8 @@ object Actions {
   // Creates players based on input/default value
   def createPlayer(value:Int) = {
     // TODO: reword the player names
-    for (i <- Range.inclusive(2, value+1)) {
-      val nameOfPlayer = s"Player${i}"
+    for (i <- Range(0, value)) {
+      val nameOfPlayer = s"Player${i+1}"
       numberOfPlayers.addOne(Player(nameOfPlayer))
     }
   }
