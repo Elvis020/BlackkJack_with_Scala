@@ -4,9 +4,10 @@ import CardDeck._
 import Messages.Messages._
 import Player.Player
 import Utils.CardRules._
-import Utils.TypeAlias.{CardInDeck, Deck, GameInPlay}
-import Utils.UtilsFns.{calculateValueOfCards, createPlayer, dealCards, displayShufflingTechniques, rules}
+import Utils.TypeAlias.{CardInDeck, Deck, GameInPlay, ListOfPlayers, PlayersWithScores}
+import Utils.UtilsFns.{calculateValueOfCards, createPlayer, dealCards, displayShufflingTechniques, get_final_winner, passedCriteria, rules}
 
+import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer
 import scala.io.StdIn
 import scala.util.{Failure, Random, Success, Try}
@@ -19,10 +20,9 @@ object Actions {
     displayShufflingTechniques()
     val readTechniqueInput = Try(StdIn.readInt()-1)
     readTechniqueInput match {
-      case Failure(_) => {
+      case Failure(_) =>
         println("Kindly check your input and select a valid technique")
         askUserTheShufflingTechnique()
-      }
       case Success(value) => value match {
         case n if n >= 0 & n < 4  => println("\n" + shuffleCardsMessage + s" using the ${shufflingTechnique(value)} technique")
         case _ => askUserTheShufflingTechnique()
@@ -30,23 +30,21 @@ object Actions {
     }
   }
 
-
   // Request the number of players and create them
+  @tailrec
   def requestAndCreatePlayers():GameInPlay = {
     displayMessage("\n"+requestNumberOfPlayers)
     println("Enter 0 for the default value which is 3.😊")
     val readUserInput = Try(StdIn.readInt())
     readUserInput match {
-      case Failure(_) => {
+      case Failure(_) =>
         println("Kindly check your input and enter a valid number, between 1 and 6")
         requestAndCreatePlayers()
-      }
       case Success(value) => value match {
         case 0 => createPlayer(3)
-        case number if number>6 || number<2 => {
+        case number if number>6 || number<2 =>
           println("Please enter a value less than 7 or greater than 1, using default value of 3.")
           createPlayer(3)
-        }
         case number => createPlayer(number)
       }
     }
@@ -69,6 +67,7 @@ object Actions {
 
 
   // Deal cards to players and check the criteria each time a hand is dealt
+  @tailrec
   def dealWithPlayers(): GameInPlay = {
 
     val playersToRemove = ListBuffer[Player]()
@@ -103,43 +102,33 @@ object Actions {
     else dealWithPlayers()
   }
 
-
-
   // Get winner
-  def getWinner:GameInPlay = {
-    // Filtering the winners
-    val filterWinners = numberOfPlayers
+  def getWinner: GameInPlay = {
+    // Filtering the probable winners
+    val probableWinners: ListOfPlayers = numberOfPlayers
       .filter(player =>
         (player.name, player.totalCardsOfPlayer)
           ._2
           .map(_.cardNumber.value)
           .sum < 21)
-
-
-
-    val finalWinners = filterWinners.map(player => (player.name,calculateValueOfCards(player)))
+    val probableWinnersWithTheirScores: PlayersWithScores = probableWinners.map(player => (player.name, calculateValueOfCards(player)))
 
 
     displayMessage(playersWhoPassedCriteria)
-    def passedCriteria() = {
-      if(finalWinners.nonEmpty) finalWinners.foreach(winner => println(winner._1+", Total: "+winner._2))
-      else println("No player passed the criteria")
-    }
-    passedCriteria()
+    passedCriteria(probableWinnersWithTheirScores: PlayersWithScores)
 
-    // In cases where there is more than one winner, display all of them
-    val get_final_winner = {
-      val max_number = if (finalWinners.nonEmpty) {finalWinners.maxBy{_._2}._2} else 0
-      filterWinners.map(player => (player.name,player.totalCardsOfPlayer.map(_.cardNumber.value).sum)).filter(_._2 == max_number)
-    }
+    // In cases where there is more than one winner, display all of them and 
+    // in cases where everyone does not meet criteria, no one wins
+    val winners = get_final_winner(probableWinnersWithTheirScores, probableWinners)
 
 
     displayMessage(results)
-
-    // In cases where everyone does not meet criteria, no one wins
-    if(get_final_winner.nonEmpty) {
-      get_final_winner.map(_._1).foreach(println)
+    if (winners.nonEmpty) {
+      winners.map(_._1).foreach(println)
     } else println("No winners")
   }
+
+
+
 
 }

@@ -2,9 +2,14 @@ package Utils
 
 import Actions.Actions.{dealCardToPlayer, shuffleCards}
 import CardDeck.{numberOfPlayers, shufflingTechnique}
+import Messages.Messages.{displayMessage, playersWhoPassedCriteria, results}
 import Player.Player
 import Utils.CardRules.stick
-import Utils.TypeAlias.GameInPlay
+import Utils.TypeAlias.{GameInPlay, ListOfPlayers, PlayersWithScores, Score}
+
+import scala.collection.mutable.ListBuffer
+import scala.io.StdIn
+import scala.util.Try
 
 object UtilsFns {
   // Set of rules, on which the game is based on
@@ -38,7 +43,34 @@ object UtilsFns {
       println(s"${i + 1}.${shufflingTechnique(i)}")
     }
   }
+  
+  
+  // Function to get the players who passed the criteria
+  def passedCriteria(players: PlayersWithScores):GameInPlay = {
+    if (players.nonEmpty) players.foreach(winner => println(winner._1 + ", Total: " + winner._2))
+    else println("No player passed the criteria")
+  }
 
   // Function to calculate the sum of the value of the cards
   val calculateValueOfCards: Player => Int = (player:Player) => player.totalCardsOfPlayer.map(_.cardNumber.value).sum
+
+  // Given the list of probable winners, calculate the highest score
+  def get_highest_score(probableWinners: PlayersWithScores):Score = {
+    if (probableWinners.nonEmpty) {
+      probableWinners.maxBy {
+        _._2
+      }._2
+    } else 0
+  }
+
+  // A function to extract the winner(s) amongst the probable winners
+  def get_final_winner(probableWinners: PlayersWithScores,filteredWinners: ListOfPlayers): PlayersWithScores = {
+    val highest_score = get_highest_score(probableWinners)
+    filteredWinners
+      .map(player => (player.name, player.totalCardsOfPlayer
+      .map(_.cardNumber.value).sum))
+      .filter(_._2 == highest_score)
+  }
+
+
 }

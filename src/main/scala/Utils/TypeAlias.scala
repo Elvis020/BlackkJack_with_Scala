@@ -11,4 +11,6 @@ object TypeAlias {
   type ListOfPlayers = ListBuffer[Player]
   type GameInPlay = Unit
   type Message = String
+  type Score = Int
+  type PlayersWithScores = ListBuffer[(String, Int)]
 }

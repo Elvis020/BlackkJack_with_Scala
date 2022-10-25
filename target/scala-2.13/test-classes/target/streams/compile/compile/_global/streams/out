@@ -1,0 +1,208 @@
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\ActionTest.scala:1:8: not found: object Actions
+[error] import Actions.Actions.shuffleCards
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\ActionTest.scala:2:8: not found: object munit
+[error] import munit.FunSuite
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\ActionTest.scala:4:26: not found: type FunSuite
+[error] class ActionTest extends FunSuite {
+[error]                          ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\ActionTest.scala:5:3: not found: value test
+[error]   test("Total number of shuffled cards should be 52") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\ActionTest.scala:6:25: not found: value shuffleCards
+[error]     val numberOfCards = shuffleCards().size
+[error]                         ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\ActionTest.scala:7:5: not found: value assertEquals
+[error]     assertEquals(numberOfCards, 52)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:1:8: not found: object CardDeck
+[error] import CardDeck._
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:2:8: not found: object Player
+[error] import Player.Player
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:3:8: not found: object munit
+[error] import munit.FunSuite
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:7:28: not found: type FunSuite
+[error] class CardDeckTest extends FunSuite{
+[error]                            ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:8:35: not found: type AfterEach
+[error]   override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
+[error]                                   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:8:54: not found: value numberOfPlayers
+[error]   override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
+[error]                                                      ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:11:18: not found: value Player
+[error]   val player_1 = Player("Player1")
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:12:18: not found: value Player
+[error]   val player_2 = Player("Player2")
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:13:18: not found: value Player
+[error]   val player_3 = Player("Player3")
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:15:3: not found: value test
+[error]   test("Total number of Clubs should be 13") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:16:5: not found: value assertEquals
+[error]     assertEquals(all_clubs.size, 13)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:16:18: not found: value all_clubs
+[error]     assertEquals(all_clubs.size, 13)
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:18:3: not found: value test
+[error]   test("Total number of Spades should be 13") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:19:5: not found: value assertEquals
+[error]     assertEquals(all_spades.size, 13)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:19:18: not found: value all_spades
+[error]     assertEquals(all_spades.size, 13)
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:21:3: not found: value test
+[error]   test("Total number of Diamonds should be 13") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:22:5: not found: value assertEquals
+[error]     assertEquals(all_diamonds.size, 13)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:22:18: not found: value all_diamonds
+[error]     assertEquals(all_diamonds.size, 13)
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:24:3: not found: value test
+[error]   test("Total number of Hearts should be 13") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:25:5: not found: value assertEquals
+[error]     assertEquals(all_hearts.size, 13)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:25:18: not found: value all_hearts
+[error]     assertEquals(all_hearts.size, 13)
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:28:3: not found: value test
+[error]   test("At the start of the game, no player has been added so the total number of players should be 0") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:29:5: not found: value assertEquals
+[error]     assertEquals(numberOfPlayers.size, 0)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardDeckTest.scala:29:18: not found: value numberOfPlayers
+[error]     assertEquals(numberOfPlayers.size, 0)
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:1:8: not found: object CardDeck
+[error] import CardDeck.CardNumber.{Ace, Jack, King}
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:2:8: not found: object CardDeck
+[error] import CardDeck.{Clubs, Spades}
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:3:8: not found: object Player
+[error] import Player.Player
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:4:8: not found: object Utils
+[error] import Utils.CardRules.{go_bust, hit, stick}
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:5:8: not found: object munit
+[error] import munit.FunSuite
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:9:29: not found: type FunSuite
+[error] class CardRulesTest extends FunSuite{
+[error]                             ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:11:18: not found: value Player
+[error]   val player_1 = Player("player_1")
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:12:3: not found: value test
+[error]   test("Total Cards player_1 has is 0") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:13:5: not found: value assertEquals
+[error]     assertEquals(player_1.totalCardsOfPlayer.size, 0)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:17:3: not found: value test
+[error]   test("Total Cards player_1 has is 3, after the addition") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:19:5: not found: value assertEquals
+[error]     assertEquals(player_1.totalCardsOfPlayer.size, 3)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:22:3: not found: value test
+[error]   test("Verifies that player_1 does not have a hit") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:23:17: not found: value hit
+[error]     val isHit = hit(player_1)
+[error]                 ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:24:5: not found: value assertEquals
+[error]     assertEquals(isHit, false)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:27:3: not found: value test
+[error]   test("Verifies that player_1 goes bust or is sticked") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:28:20: not found: value go_bust
+[error]     val isBusted = go_bust(player_1)
+[error]                    ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:29:21: not found: value stick
+[error]     val isSticked = stick(player_1)
+[error]                     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:30:5: not found: value assertEquals
+[error]     assertEquals(isBusted, true)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\CardRulesTest.scala:31:5: not found: value assertEquals
+[error]     assertEquals(isSticked, true)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:1:8: not found: object CardDeck
+[error] import CardDeck.numberOfPlayers
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:2:8: not found: object Player
+[error] import Player.Player
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:3:8: not found: object Utils
+[error] import Utils.UtilsFns.dealCards
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:4:8: not found: object munit
+[error] import munit.FunSuite
+[error]        ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:8:26: not found: type FunSuite
+[error] class PlayerTest extends FunSuite{
+[error]                          ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:9:35: not found: type AfterEach
+[error]   override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
+[error]                                   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:9:54: not found: value numberOfPlayers
+[error]   override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
+[error]                                                      ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:12:18: not found: value Player
+[error]   val player_1 = Player("player_1")
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:13:18: not found: value Player
+[error]   val player_2 = Player("player_2")
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:14:18: not found: value Player
+[error]   val player_3 = Player("player_3")
+[error]                  ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:18:3: not found: value test
+[error]   test("Verifies player_1 has 2 cards after he is dealt with initially") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:19:5: not found: value dealCards
+[error]     dealCards(2, player_1)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:20:5: not found: value assertEquals
+[error]     assertEquals(player_1.totalCardsOfPlayer.size, 2)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:24:3: not found: value test
+[error]   test("Verifies player_1 has 3 cards after he is dealt again") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:25:5: not found: value dealCards
+[error]     dealCards(1, player_1)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:26:5: not found: value assertEquals
+[error]     assertEquals(player_1.totalCardsOfPlayer.size, 3)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:29:3: not found: value test
+[error]   test("Verifies that there are a total of 3 players") {
+[error]   ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:30:5: not found: value numberOfPlayers
+[error]     numberOfPlayers.addAll(ListBuffer(player_1,player_2,player_3))
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:31:5: not found: value assertEquals
+[error]     assertEquals(numberOfPlayers.size, 3)
+[error]     ^
+[error] C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\PlayerTest.scala:31:18: not found: value numberOfPlayers
+[error]     assertEquals(numberOfPlayers.size, 3)
+[error]                  ^
+[error] 69 errors found
