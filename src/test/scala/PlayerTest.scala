@@ -6,10 +6,10 @@ import munit.FunSuite
 
 import java.io.StringReader
 import scala.collection.mutable.ListBuffer
-import scala.util.{Success, Try}
 
 class PlayerTest extends FunSuite{
   override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
+  override def afterAll(): Unit = numberOfPlayers.clear()
 
   // Mocking the players
   val player_1 = Player("player_1")
