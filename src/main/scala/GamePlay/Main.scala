@@ -34,7 +34,8 @@ object Main {
         numberOfPlayers.map(player => (player.name, player.toString()))
           .foreach(player => println(player._1 + " with" + player._2))
 
-        // Step 7: Players are dealt with based on the outcome of their cards
+        // Step 7: Players are dealt with based on the outcome of their
+        // cards and the winner(s) is determined
         dealWithPlayers()
     }
 

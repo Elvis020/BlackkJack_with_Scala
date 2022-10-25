@@ -1,0 +1,58 @@
+[debug] [zinc] IncrementalCompile -----------
+[debug] IncrementalCompile.incrementalCompile
+[debug] previous = Stamps for: 0 products, 0 sources, 0 libraries
+[debug] current source = Set(${BASE}/ActionTest.scala, ${BASE}/CardDeckTest.scala, ${BASE}/CardRulesTest.scala, ${BASE}/PlayerTest.scala)
+[debug] > initialChanges = InitialChanges(Changes(added = Set(${BASE}/CardRulesTest.scala, ${BASE}/CardDeckTest.scala, ${BASE}/PlayerTest.scala, ${BASE}/ActionTest.scala), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())
+[debug] Full compilation, no sources in previous analysis.
+[debug] all 4 sources are invalidated
+[debug] Initial set of included nodes: 
+[debug] Recompiling all sources: number of invalidated sources > 50.0 percent of all sources
+[debug] compilation cycle 1
+[info] compiling 4 Scala sources to C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\target\scala-2.12\classes ...
+[debug] Getting org.scala-sbt:compiler-bridge_2.12:1.7.2:compile for Scala 2.12.16
+[info] Non-compiled module 'compiler-bridge_2.12' for Scala 2.12.16. Compiling...
+[debug] Creating plain compiler interface for 2.12.16.
+[debug]   > Arguments: 
+[debug] 	-d
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_c86b97a7
+[debug] 	-nowarn
+[debug] 	-bootclasspath
+[debug] 	C:\Users\elvis\.sbt\boot\scala-2.12.16\lib\scala-library.jar
+[debug] 	-classpath
+[debug] 	C:\Users\elvis\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-interface\1.7.2\compiler-interface-1.7.2.jar;C:\Users\elvis\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\util-interface\1.7.2\util-interface-1.7.2.jar;C:\Users\elvis\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-sbt\compiler-bridge_2.12\1.7.2\compiler-bridge_2.12-1.7.2-sources.jar;C:\Users\elvis\.sbt\boot\scala-2.12.16\lib\scala-compiler.jar;C:\Users\elvis\.sbt\boot\scala-2.12.16\lib\scala-reflect.jar;C:\Users\elvis\.sbt\boot\scala-2.12.16\lib\scala-xml_2.12-1.0.6.jar
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\scala\ZincCompat.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\API.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\AbstractZincFile.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\Analyzer.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\CallbackGlobal.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\ClassName.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\Compat.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\CompilerBridge.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\ConsoleBridge.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\DelegatingReporter.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\Dependency.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\ExtractAPI.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\ExtractUsedNames.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\GlobalHelpers.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\InteractiveConsoleBridge.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\InteractiveConsoleFactoryBridge.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\InteractiveConsoleHelper.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\InteractiveConsoleResponse.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\JarUtils.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\JavaUtils.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\LocalToNonLocalClass.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\LocateClassFile.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\Log.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\Message.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\PlainNioFile.scala
+[debug] 	C:\Users\elvis\AppData\Local\Temp\sbt_5dd9e90f\xsbt\ScaladocBridge.scala
+[debug]       
+[info]   Compilation completed in 6.699s.
+[debug] [zinc] Running cached compiler 41c025ef for Scala compiler version 2.12.16
+[debug] [zinc] The Scala compiler is invoked with:
+[debug] 	-bootclasspath
+[debug] 	C:\Users\elvis\.sbt\boot\scala-2.12.16\lib\scala-library.jar
+[debug] 	-classpath
+[debug] 	C:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\test\scala\target\scala-2.12\classes
+[debug] Compilation failed (CompilerInterface)
+[error] (Compile / compileIncremental) Compilation failed
