@@ -12,6 +12,11 @@ scala sbt
 sbt test
 ```
 
+## Run Game
+```
+This is done in the GamePlay > Main
+```
+
 # THE BLACK JACK GAME DOMAIN MODEL
 <hr>
 Blackjack is a game of cards using a standard deck of cards of 4 suits 
@@ -44,11 +49,13 @@ following strategy to play the game:
   dealt another card).
   * If the player's total is greater than 21, they "go bust" (i.e. are 
   ejected from the game).
-  The game finishes if:
+
+
+
+The game finishes if:
   * All players "stick" in a round.
   * Any player hits 21 exactly.
-  * There is only one player is left in the game because all others 
-have "gone bust".
+  * There is only one player is left in the game because all others have "gone bust".
 
 
 
