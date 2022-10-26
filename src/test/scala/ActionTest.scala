@@ -1,5 +1,5 @@
 import Actions.Actions.{askUserTheShufflingTechnique, dealCardToPlayer, shuffleCards}
-import Utils.TypeAlias.CardInDeck
+import Utils.TypeAlias.Card
 import munit.FunSuite
 
 import java.io.{ByteArrayOutputStream, StringReader}
@@ -41,7 +41,7 @@ class ActionTest extends FunSuite {
   }
 
   test("Verifies that only one card is dealt to the player, when the dealCardToPlayer() is called") {
-    val listOfCards = ListBuffer[CardInDeck]()
+    val listOfCards = ListBuffer[Card]()
     listOfCards += dealCardToPlayer(shuffleCards())
     assertEquals(listOfCards.size, 1)
   }
