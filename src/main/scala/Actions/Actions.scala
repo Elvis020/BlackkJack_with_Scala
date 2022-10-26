@@ -4,8 +4,8 @@ import CardDeck._
 import Messages.Messages._
 import Player.Player
 import Utils.CardRules._
-import Utils.TypeAlias.{CardInDeck, Deck, GameInPlay, ListOfPlayers, PlayersWithScores}
-import Utils.UtilsFns.{calculateValueOfCards, createPlayer, dealCards, displayShufflingTechniques, get_final_winner, passedCriteria, rules}
+import Utils.TypeAlias._
+import Utils.UtilsFns._
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ListBuffer
@@ -29,6 +29,7 @@ object Actions {
       }
     }
   }
+
 
   // Request the number of players and create them
   @tailrec
@@ -59,7 +60,7 @@ object Actions {
   }
 
   // Take the head of the shuffled deck and start giving it to the players(Current work-around)
-  def dealCardToPlayer(cachedShuffledCards: Deck): CardInDeck = {
+  def dealCardToPlayer(cachedShuffledCards: Deck): Card = {
     val selected = cachedShuffledCards.head
     cachedShuffledCards.remove(0)
     selected

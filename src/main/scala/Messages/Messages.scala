@@ -1,6 +1,6 @@
 package Messages
 
-import Utils.TypeAlias.{GameInPlay, Message}
+import Utils.TypeAlias._
 
 object Messages {
   val welcome:Message = "Welcome to the Black Jack Game Project"

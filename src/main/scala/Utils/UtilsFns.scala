@@ -1,15 +1,10 @@
 package Utils
 
-import Actions.Actions.{dealCardToPlayer, shuffleCards}
-import CardDeck.{numberOfPlayers, shufflingTechnique}
-import Messages.Messages.{displayMessage, playersWhoPassedCriteria, results}
+import Actions.Actions._
+import CardDeck._
 import Player.Player
 import Utils.CardRules.stick
-import Utils.TypeAlias.{GameInPlay, ListOfPlayers, PlayersWithScores, Score}
-
-import scala.collection.mutable.ListBuffer
-import scala.io.StdIn
-import scala.util.Try
+import Utils.TypeAlias._
 
 object UtilsFns {
   // Set of rules, on which the game is based on
