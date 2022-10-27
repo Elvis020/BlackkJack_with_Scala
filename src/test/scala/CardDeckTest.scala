@@ -6,15 +6,7 @@ import scala.collection.mutable.ListBuffer
 
 class CardDeckTest extends FunSuite{
   override def afterAll(): Unit = numberOfPlayers.clear()
-
-  override def beforeAll(): Unit = {
-    // Mocking the players
-    val player_1 = Player("Player1")
-    val player_2 = Player("Player2")
-    val player_3 = Player("Player3")
-  }
-
-
+  
   test("Total number of Clubs should be 13") {
     assertEquals(all_clubs.size, 13)
   }
