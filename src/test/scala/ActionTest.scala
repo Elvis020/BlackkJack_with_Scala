@@ -11,6 +11,7 @@ import scala.collection.mutable.ListBuffer
 class ActionTest extends FunSuite {
   override def afterAll(): Unit = numberOfPlayers.clear()
 
+
   override def beforeAll(): Unit = {
     // Mocking the players
     val player_1 = Player("Player1")
