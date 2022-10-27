@@ -11,20 +11,24 @@ import scala.collection.mutable.ListBuffer
 class ActionTest extends FunSuite {
   override def afterAll(): Unit = numberOfPlayers.clear()
 
-  // Mocking the players
-  val player_1 = Player("Player1")
-  val player_2 = Player("Player2")
-  val player_3 = Player("Player3")
+  override def beforeAll(): Unit = {
+    // Mocking the players
+    val player_1 = Player("Player1")
+    val player_2 = Player("Player2")
+    val player_3 = Player("Player3")
 
-  val card1 = ListBuffer(Hearts(CardNumber.Three), Diamond(CardNumber.Nine), Clubs(CardNumber.Ace))
-  val card2 = ListBuffer(Clubs(Four), Spades(Eight), Hearts(Two))
-  val card3 = ListBuffer(Diamond(Six), Clubs(Eight), Spades(Two))
+    val card1 = ListBuffer(Hearts(CardNumber.Three), Diamond(CardNumber.Nine), Clubs(CardNumber.Ace))
+    val card2 = ListBuffer(Clubs(Four), Spades(Eight), Hearts(Two))
+    val card3 = ListBuffer(Diamond(Six), Clubs(Eight), Spades(Two))
 
-  // Adding cards to players
-  player_1.totalCardsOfPlayer.addAll(card1)
-  player_2.totalCardsOfPlayer.addAll(card2)
-  player_3.totalCardsOfPlayer.addAll(card3)
-  numberOfPlayers.addAll(ListBuffer(player_1, player_2, player_3))
+    // Adding cards to players
+    player_1.totalCardsOfPlayer.addAll(card1)
+    player_2.totalCardsOfPlayer.addAll(card2)
+    player_3.totalCardsOfPlayer.addAll(card3)
+    numberOfPlayers.addAll(ListBuffer(player_1, player_2, player_3))
+  }
+
+
 
 
 
@@ -69,6 +73,7 @@ class ActionTest extends FunSuite {
 
   test("With the given data, the total number of probable players are 2") {
     val actual = get_probable_winners(numberOfPlayers).size
+    println(actual)
     assertEquals(actual,2)
   }
 
@@ -78,7 +83,6 @@ class ActionTest extends FunSuite {
   }
 
   test("With the given data, the final winner is Player 3") {
-    val actual = getWinner(numberOfPlayers)
     val out = new ByteArrayOutputStream()
     Console.withOut(out){
       getWinner(numberOfPlayers)
