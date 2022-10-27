@@ -99,19 +99,21 @@ object Actions {
     }
     
     // Check again with rules and deal again to players depending on outcome
-    if (rules()) getWinner
+    if (rules()) getWinner(numberOfPlayers)
     else dealWithPlayers()
   }
 
-  // Get winner
-  def getWinner: GameInPlay = {
+  // TODO: Test this function
+  def get_probable_winners(players:ListOfPlayers):ListOfPlayers = {
+    players
+      .filter(player =>(player.name, player.totalCardsOfPlayer.map(_.cardNumber.value).sum < 21)._2)
+  }
+
+  // Get winner TODO: Test this function
+  def getWinner(numberOfPlayers:ListOfPlayers): GameInPlay = {
+
     // Filtering the probable winners
-    val probableWinners: ListOfPlayers = numberOfPlayers
-      .filter(player =>
-        (player.name, player.totalCardsOfPlayer)
-          ._2
-          .map(_.cardNumber.value)
-          .sum < 21)
+    val probableWinners: ListOfPlayers = get_probable_winners(numberOfPlayers)
     val probableWinnersWithTheirScores: PlayersWithScores = probableWinners.map(player => (player.name, calculateValueOfCards(player)))
 
 
@@ -120,7 +122,7 @@ object Actions {
 
     // In cases where there is more than one winner, display all of them and 
     // in cases where everyone does not meet criteria, no one wins
-    val winners = get_final_winner(probableWinnersWithTheirScores, probableWinners)
+    val winners: PlayersWithScores = get_final_winner(probableWinnersWithTheirScores, probableWinners)
 
 
     displayMessage(results)
