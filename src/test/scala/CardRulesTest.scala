@@ -1,5 +1,5 @@
 import CardDeck.CardNumber.{Ace, Jack, King}
-import CardDeck.{Clubs, Spades}
+import CardDeck.{Clubs, Spades, numberOfPlayers}
 import Player.Player
 import Utils.CardRules.{go_bust, hit, stick}
 import munit.FunSuite
@@ -7,8 +7,11 @@ import munit.FunSuite
 import scala.collection.mutable.ListBuffer
 
 class CardRulesTest extends FunSuite{
+  override def afterAll(): Unit = numberOfPlayers.clear()
+
   // Attempt to Mock(might find a better approach to Mocking)
   val player_1 = Player("player_1")
+
   test("Total Cards player_1 has is 0") {
     assertEquals(player_1.totalCardsOfPlayer.size, 0)
   }
@@ -27,8 +30,7 @@ class CardRulesTest extends FunSuite{
   test("Verifies that player_1 goes bust or is sticked") {
     val isBusted = go_bust(player_1)
     val isSticked = stick(player_1)
-    assertEquals(isBusted, true)
-    assertEquals(isSticked, true)
+    assertEquals(isBusted || isSticked, true)
   }
 
 }

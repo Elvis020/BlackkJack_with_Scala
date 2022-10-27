@@ -5,7 +5,6 @@ import munit.FunSuite
 import scala.collection.mutable.ListBuffer
 
 class CardDeckTest extends FunSuite{
-  override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
   override def afterAll(): Unit = numberOfPlayers.clear()
 
   // Mocking the players
