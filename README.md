@@ -14,7 +14,7 @@ sbt test
 
 ## Run Game
 ```
-This is done in the GamePlay > Main. For now, it is a console game. Working on making it a commandline game😅
+sbt run "--player <number-of-players>"
 ```
 
 # THE BLACK JACK GAME DOMAIN MODEL
