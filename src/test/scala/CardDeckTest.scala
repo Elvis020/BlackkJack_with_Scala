@@ -2,7 +2,7 @@ import CardDeck._
 import munit.FunSuite
 
 class CardDeckTest extends FunSuite{
-
+  override def beforeEach(context:BeforeEach): Unit = numberOfPlayers.clear()
 
   test("Total number of Clubs should be 13") {
     assertEquals(all_clubs.size, 13)

@@ -9,10 +9,9 @@ import java.io.{ByteArrayOutputStream, StringReader}
 import scala.collection.mutable.ListBuffer
 
 class ActionTest extends FunSuite {
-  override def afterAll(): Unit = numberOfPlayers.clear()
+  override def afterEach(context: AfterEach): Unit = numberOfPlayers.clear()
 
-
-  override def beforeAll(): Unit = {
+  override def beforeEach(context: BeforeEach): Unit = {
     // Mocking the players
     val player_1 = Player("Player1")
     val player_2 = Player("Player2")
@@ -28,7 +27,6 @@ class ActionTest extends FunSuite {
     player_3.totalCardsOfPlayer.addAll(card3)
     numberOfPlayers.addAll(ListBuffer(player_1, player_2, player_3))
   }
-
 
 
 
@@ -72,9 +70,9 @@ class ActionTest extends FunSuite {
     assertEquals(listOfCards.size, 1)
   }
 
+
   test("With the given data, the total number of probable players are 2") {
     val actual = get_probable_winners(numberOfPlayers).size
-    println(actual)
     assertEquals(actual,2)
   }
 

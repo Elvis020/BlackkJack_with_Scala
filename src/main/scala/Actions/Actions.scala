@@ -32,24 +32,9 @@ object Actions {
 
 
   // Request the number of players and create them
-  @tailrec
-  def requestAndCreatePlayers():GameInPlay = {
-    displayMessage("\n"+requestNumberOfPlayers)
-    println("Enter 0 for the default value which is 3.😊")
-    val readUserInput = Try(StdIn.readInt())
-    readUserInput match {
-      case Failure(_) =>
-        println("Kindly check your input and enter a valid number, between 1 and 6")
-        requestAndCreatePlayers()
-      case Success(value) => value match {
-        case 0 => createPlayer(3)
-        case number if number>6 || number<2 =>
-          println("Please enter a value less than 7 or greater than 1, using default value of 3.")
-          createPlayer(3)
-        case number => createPlayer(number)
-      }
-    }
-
+  def requestAndCreatePlayers(numberOfPlayers:Int):GameInPlay = {
+    if (numberOfPlayers>6 || numberOfPlayers<2) throw new Exception("Number of players cannot be more than 6 or less than 2")
+    else createPlayer(numberOfPlayers)
   }
 
 
@@ -103,13 +88,12 @@ object Actions {
     else dealWithPlayers()
   }
 
-  // TODO: Test this function
   def get_probable_winners(players:ListOfPlayers):ListOfPlayers = {
     players
       .filter(player =>(player.name, player.totalCardsOfPlayer.map(_.cardNumber.value).sum < 21)._2)
   }
 
-  // Get winner TODO: Test this function
+  // Get winner
   def getWinner(numberOfPlayers:ListOfPlayers): GameInPlay = {
 
     // Filtering the probable winners
