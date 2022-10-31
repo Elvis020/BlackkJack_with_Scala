@@ -1,10 +1,12 @@
 import Actions.Actions.requestAndCreatePlayers
 import CardDeck.numberOfPlayers
 import Player.Player
-import Utils.UtilsFns.{createPlayer, dealCards}
+import Utils.UtilsFns.{createPlayer, dealCards, select_players}
 import munit.FunSuite
+import org.junit.Assert.assertThrows
 
 import java.io.StringReader
+import javax.swing.text.html.HTML.Tag
 import scala.collection.mutable.ListBuffer
 
 class PlayerTest extends FunSuite{
@@ -40,40 +42,31 @@ class PlayerTest extends FunSuite{
   }
 
 
-  test("Verifies that requestAndCreatePlayers() creates 3 players if the input is greater than 6") {
-    val inputParam = "21"
-    val in = new StringReader(inputParam)
-    Console.withIn(in) {
-      requestAndCreatePlayers()
+  test("Verifies that requestAndCreatePlayers() throws an exception if input is 21") {
+    val thrown = intercept[Exception] {
+      requestAndCreatePlayers(21)
     }
-    assertEquals(numberOfPlayers.size, 3)
+    assertEquals(thrown.getMessage,"Number of players cannot be more than 6 or less than 2")
   }
 
-  test("Verifies that requestAndCreatePlayers() creates 3 players if the input is less than 0") {
-    val inputParam = "-2"
-    val in = new StringReader(inputParam)
-    Console.withIn(in) {
-      requestAndCreatePlayers()
+  test("Verifies that requestAndCreatePlayers() throws an exception if input is -2") {
+    val thrown = intercept[Exception] {
+      requestAndCreatePlayers(-2)
     }
-    assertEquals(numberOfPlayers.size, 3)
+    assertEquals(thrown.getMessage,"Number of players cannot be more than 6 or less than 2")
   }
 
 
-  test("Verifies that requestAndCreatePlayers() creates 3 players if the input is 0") {
-    val inputParam = "0"
-    val in = new StringReader(inputParam)
-    Console.withIn(in) {
-      requestAndCreatePlayers()
-    }
-    assertEquals(numberOfPlayers.size, 3)
+
+  test("Verifies that requestAndCreatePlayers() creates 3 players if there is no args for --player") {
+    val getArgs = List(("--strategy","all-stick"))
+    val players = select_players(getArgs)
+    requestAndCreatePlayers(players)
+    assertEquals(numberOfPlayers.size,3)
   }
 
   test("Verifies that requestAndCreatePlayers() creates 5 players if the input is 5") {
-    val inputParam = "5"
-    val in = new StringReader(inputParam)
-    Console.withIn(in) {
-      requestAndCreatePlayers()
-    }
+    requestAndCreatePlayers(5)
     assertEquals(numberOfPlayers.size, 5)
   }
 

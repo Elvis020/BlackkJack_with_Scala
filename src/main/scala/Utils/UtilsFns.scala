@@ -68,4 +68,11 @@ object UtilsFns {
   }
 
 
+  // A function to select players from the command line
+  def select_players(get_args: Seq[(String, String)]): Int = {
+    if (get_args.isEmpty || ((get_args.length == 1) && get_args.head._1 == "--strategy")) 3
+    else get_args.filter(_._1 == "--player").head._2.toInt
+  }
+
+
 }

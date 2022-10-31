@@ -4,15 +4,17 @@ import Actions.Actions._
 import CardDeck.numberOfPlayers
 import Messages.Messages._
 import Utils.TypeAlias.Deck
-import Utils.UtilsFns.dealCards
+import Utils.UtilsFns.{dealCards, select_players}
 
 object Main {
     def main(args: Array[String]): Unit = {
-        // TODO: Step 0 - Add the ability to take from commandLine
+        val get_args: Seq[(String, String)] = args.sliding(2, 2).map(arg => (arg.toSeq.head, arg.toSeq.last)).toSeq
+
 
         // Step 1
         displayWelcomeMessage(welcome)
-        requestAndCreatePlayers()
+        val players = select_players(get_args)
+        requestAndCreatePlayers(players)
 
         // Step 2
         displayMessage(availablePlayers)
@@ -38,5 +40,4 @@ object Main {
         // cards and the winner(s) is determined
         dealWithPlayers()
     }
-
 }

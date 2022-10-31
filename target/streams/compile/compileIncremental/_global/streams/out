@@ -1,6 +1,0 @@
-[debug] [zinc] IncrementalCompile -----------
-[debug] IncrementalCompile.incrementalCompile
-[debug] previous = Stamps for: 40 products, 11 sources, 1 libraries
-[debug] current source = Set(${BASE}/src/main/scala/Actions/Actions.scala, ${BASE}/src/main/scala/CardDeck/Suit.scala, ${BASE}/src/main/scala/CardDeck/CardTypes.scala, ${BASE}/src/main/scala/GamePlay/Main.scala, ${BASE}/src/main/scala/Utils/CardRules.scala, ${BASE}/src/main/scala/CardDeck/CardNumber.scala, ${BASE}/src/main/scala/Utils/UtilsFns.scala, ${BASE}/src/main/scala/package.scala, ${BASE}/src/main/scala/Utils/TypeAlias.scala, ${BASE}/src/main/scala/Player/Player.scala, ${BASE}/src/main/scala/Messages/Messages.scala)
-[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())
-[debug] No changes
