@@ -5,6 +5,7 @@ import Player.Player
 
 import scala.collection.mutable.ListBuffer
 
+
 object TypeAlias {
   type Deck = ListBuffer[Card]
   type Card = Suit with Product
