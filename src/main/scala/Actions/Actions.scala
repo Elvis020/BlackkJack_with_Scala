@@ -45,7 +45,7 @@ object Actions {
   }
 
   // Take the head of the shuffled deck and start giving it to the players(Current work-around)
-  def dealCardToPlayer(cachedShuffledCards: Deck): Card = {
+  def dealCardToPlayer(cachedShuffledCards: Deck) = {
     val selected = cachedShuffledCards.head
     cachedShuffledCards.remove(0)
     selected

@@ -1,0 +1,25 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\main\scala\Actions\Actions.scala:43:37: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : CardDeck.all_hearts.type (with underlying type scala.collection.mutable.ListBuffer[CardDeck.Hearts])[0m
+[0m[[0m[31merror[0m] [0m[0m required: Utils.TypeAlias.Card[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  CardDeck.Suit with Product[0m
+[0m[[0m[31merror[0m] [0m[0m    val allCards: Deck = ListBuffer(all_hearts, all_diamonds, all_clubs, all_spades)[0m
+[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\main\scala\Actions\Actions.scala:43:49: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : CardDeck.all_diamonds.type (with underlying type scala.collection.mutable.ListBuffer[CardDeck.Diamond])[0m
+[0m[[0m[31merror[0m] [0m[0m required: Utils.TypeAlias.Card[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  CardDeck.Suit with Product[0m
+[0m[[0m[31merror[0m] [0m[0m    val allCards: Deck = ListBuffer(all_hearts, all_diamonds, all_clubs, all_spades)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\main\scala\Actions\Actions.scala:43:63: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : CardDeck.all_clubs.type (with underlying type scala.collection.mutable.ListBuffer[CardDeck.Clubs])[0m
+[0m[[0m[31merror[0m] [0m[0m required: Utils.TypeAlias.Card[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  CardDeck.Suit with Product[0m
+[0m[[0m[31merror[0m] [0m[0m    val allCards: Deck = ListBuffer(all_hearts, all_diamonds, all_clubs, all_spades)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                              ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\elvis\OneDrive\Documents\Dev_Mode\Codes\Scala\BlackJack_Project\src\main\scala\Actions\Actions.scala:43:74: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : CardDeck.all_spades.type (with underlying type scala.collection.mutable.ListBuffer[CardDeck.Spades])[0m
+[0m[[0m[31merror[0m] [0m[0m required: Utils.TypeAlias.Card[0m
+[0m[[0m[31merror[0m] [0m[0m    (which expands to)  CardDeck.Suit with Product[0m
+[0m[[0m[31merror[0m] [0m[0m    val allCards: Deck = ListBuffer(all_hearts, all_diamonds, all_clubs, all_spades)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mfour errors found[0m

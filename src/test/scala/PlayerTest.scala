@@ -3,10 +3,7 @@ import CardDeck.numberOfPlayers
 import Player.Player
 import Utils.UtilsFns.{createPlayer, dealCards, select_players}
 import munit.FunSuite
-import org.junit.Assert.assertThrows
 
-import java.io.StringReader
-import javax.swing.text.html.HTML.Tag
 import scala.collection.mutable.ListBuffer
 
 class PlayerTest extends FunSuite{
